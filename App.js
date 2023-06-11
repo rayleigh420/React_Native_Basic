@@ -5,6 +5,7 @@ import Screen1 from './src/Screens/Screen1';
 import Screen2 from './src/Screens/Screen2';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AccelerometerC from './src/Components/AccelerometerC';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator();
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
+        <Tab.Screen name='Accelerometer' component={AccelerometerC} />
         <Tab.Screen name='Screen 1' component={Screen1} />
         <Tab.Screen name='Screen 2' component={Screen2} />
       </Tab.Navigator>
