@@ -1,5 +1,6 @@
-import { View, Text, PermissionsAndroid, Pressable } from 'react-native'
+import { View, Text, PermissionsAndroid, Pressable, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
+import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 const GelocationC = () => {
@@ -48,15 +49,49 @@ const GelocationC = () => {
     //     }
 
     return (
-        <View>
+        <View style={styles.container}>
             {/* <Pressable onPress={requestLocationPermission}>
                 <Text>
                     Request GPS Location
                 </Text>
             </Pressable> */}
-            <Text>{text}</Text>
+            {/* <Text>{text}</Text> */}
+            {
+                location ?
+                    (
+                        <MapView
+                            style={styles.map}
+                            initialRegion={{
+                                latitude: location.coords.latitude,
+                                longitude: location.coords.longitude,
+                                latitudeDelta: 0.0922,
+                                longitudeDelta: 0.0421,
+                            }}
+                        >
+                            <Marker
+                                coordinate={{
+                                    latitude: location.coords.latitude,
+                                    longitude: location.coords.longitude,
+                                }}
+                                title="Current Location"
+                            />
+                        </MapView>
+                    )
+                    :
+                    <Text>Waiting Map</Text>
+            }
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    map: {
+        width: '100%',
+        height: '100%',
+    },
+});
 
 export default GelocationC
