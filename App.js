@@ -6,6 +6,8 @@ import Screen2 from './src/Screens/Screen2';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AccelerometerC from './src/Components/AccelerometerC';
+import Camera from './src/Components/Camera';
+import GelocationC from './src/Components/GelocationC';
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator();
@@ -16,7 +18,8 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name='Accelerometer' component={AccelerometerC} />
-        <Tab.Screen name='Screen 1' component={Screen1} />
+        <Tab.Screen name='Camera' component={Camera} />
+        <Tab.Screen name='Geolocation' component={GelocationC} />
         <Tab.Screen name='Screen 2' component={Screen2} />
       </Tab.Navigator>
     </NavigationContainer>
